@@ -1,0 +1,17 @@
+.ham{
+   
+    border-radius:50%;
+    border:none;
+    background-color: white;
+   padding: 0.5rem;
+}
+.ham svg{
+margin-top:0.5rem
+}
+
+@media screen and (max-width: 500px) {
+    .ham svg{
+       height:1.5rem;
+       width:1.5rem;
+    }
+}

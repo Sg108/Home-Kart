@@ -1,0 +1,113 @@
+.backdrop{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 4000;
+}
+.modal-container {
+    height: 20vh;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center; */
+  
+  }
+  .cross{
+    position: absolute;
+    right:2rem;
+    top:2rem;
+    font-size: 2.5rem;
+  }
+  
+  
+  .modal {
+    
+
+    display: flex;
+    position: relative;
+    width:50%;
+    height: fit-content;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .modal .input{
+    width:90%;
+    border:none;
+    outline: none;
+    height:6rem;
+    font-size: 2.3rem;
+    background-color: rgba(164, 164, 164, 0.153);
+  }
+  .searching{
+    width:10%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(164, 164, 164, 0.149);
+  }
+  .fechar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid white;
+    top: -30px;
+    right: -30px;
+    position: absolute;
+    background-image: linear-gradient(#f97330, rgb(238, 193, 68));
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .modal label {
+    font-family: monospace;
+    display: block;
+    font-weight: bold;
+    margin: 1rem 0 0.5rem 0;
+  }
+  
+
+  
+  .modal button[type="submit"] {
+    display: block;
+    background-image: linear-gradient(#f97330, rgb(238, 130, 68));
+    border: none;
+    border-radius: 4px;
+    padding: 0.7rem 2rem;
+    color: white;
+    font-family: monospace;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 960px) {
+    .modal{
+      width:80%
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .modal .input{
+      width:85%;
+      height:5rem
+    }
+    .searching{
+      width:15%
+    }
+    .cross{
+      right:1rem;
+      top:1rem;
+      font-size: 2.2rem;
+    }
+  }

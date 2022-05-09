@@ -1,0 +1,164 @@
+.contain{
+    height:100%;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(0, 0, 0, 0.7);
+    z-index: 4000;
+}
+.log-container{
+ width:40%
+}
+.close{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    position: absolute;
+    right:0;
+    height: 100%;
+    width:8%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    background-color: rgb(248, 219, 180);
+}
+.x{
+    height:50%;
+    width:50%
+}
+.switch{
+    position: relative;
+    width:40%;
+    display: flex;
+    justify-content: flex-start;
+    gap:1rem
+}
+.reg{
+    width:20%;
+    cursor: pointer;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding:1.5rem 0rem 1.5rem 0rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: rgb(248, 219, 180);
+}
+.log{
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+        width:20%;
+        padding:1.5rem 0rem 1.5rem 0rem;
+        text-align: center;
+        font-size: 1.2rem;
+        background-color: rgb(248, 219, 180);
+    
+}
+.register{
+    width:100%;
+    background-color: antiquewhite;
+    padding:2rem
+}
+.google_signup{
+    display:flex;
+    /* justify-content: center; */
+     align-items:center;
+     margin-bottom: 1rem;
+     width: 100%;
+     cursor:pointer
+    
+}
+.signup_button{
+    display:flex;
+    /* justify-content: center; */
+     align-items:center;
+     justify-content: center;
+     gap:2rem
+}
+.signup_button img{
+    width:2.5rem;
+    height:2.5rem
+}
+.login{
+    width:100%;
+    background-color: antiquewhite;
+    padding:2rem
+}
+.title{
+    text-align: center;
+    font-size:2.5rem
+}
+.form{
+    display:flex;
+    flex-wrap: wrap;
+}
+.form input{
+    flex:1 1;
+    flex-basis: 200px;
+    min-width: 40%;
+    margin:20px 10px 0px 0px;
+    padding:1rem
+}
+.login .form input{
+    flex:1 1;
+    flex-basis: 200px;
+    min-width: 60%;
+    margin:20px 10px 0px 0px;
+    padding:1rem
+}
+.register p,.login p{
+    font-size:1.4rem;
+    margin:2rem 0rem
+}
+.register button,.login button{
+    width:100%;
+    font-size: 1.4rem;
+    padding:1rem 1.5rem;
+    background-color:rgb(255, 123, 0);
+    color:white;
+    border:none;
+}
+@media screen and (max-width: 960px) {
+    .log-container{
+        width:60%
+    }
+    .switch{
+        width:60%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .log-container{
+        width:88%
+    }
+    .switch{
+        width:88%;
+    }
+    .reg{
+        width:30%;
+        padding: 1rem 1rem;
+     
+    }
+    .log{
+        width:30%;
+        padding: 1rem 1rem;
+     
+    }
+    .form input{
+    margin:10px 5px 0px 0px;
+
+    }
+    .title{
+        text-align: center;
+        font-size:2rem
+    }
+    .register p{
+        margin:1rem 0
+    }
+}

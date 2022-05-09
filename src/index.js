@@ -4,9 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
+import '../node_modules/swiper/swiper-bundle.css';
+
 ReactDOM.render(
+  
   <React.StrictMode>
+   
     <App />
+
   </React.StrictMode>,
   document.getElementById('root')
 );

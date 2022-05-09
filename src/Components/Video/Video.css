@@ -1,0 +1,85 @@
+html{
+    color:black
+}
+.container{
+    height:100vh;
+
+   
+}
+
+.video-content{
+    position:relative;
+    height :100%;
+    width: 100%;
+    overflow: hidden;
+  
+}
+.myvideo{
+    position:relative;
+    top:0;
+    object-fit: fill;
+    /* //z-index: -1; */
+    height:100%;
+    overflow: hidden;
+    width: 100%;
+}
+.sound{
+    position:absolute;
+   z-index:100;
+   font-size: 2.2rem;
+   bottom:6rem;
+   right:4rem;
+   color:white
+
+}
+
+
+/* .container .img{
+    height:100%;
+    width: 100%;
+}  */
+
+
+  .flag{
+    position: absolute;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    z-index:1000;
+    height:100vh;
+    animation:mymove 1s 1s forwards
+    
+  }
+
+  .orange{
+    flex:1 1;
+    background-color:rgb(255, 123, 0);
+  }
+  .white{
+    flex:1 1;
+    background-color:white;
+  }
+  .black{
+    flex:1 1;
+    background-color:rgb(0, 0, 0);
+  }
+  @keyframes mymove {
+    from {top: 0px;
+          height: 100vh;}
+    to {top: 95%;
+       height: 5%;}
+  }
+  @media screen and (max-width: 960px) {
+    .sound{
+      font-size: 2rem;
+      bottom:12%;
+      right:3rem
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .sound{
+      right:2rem;
+      font-size: 1.8rem;
+    }
+  }
