@@ -219,7 +219,7 @@ transition: color 2s;
     }
   }
   .logo{
-      padding-top: 0.7rem;
+      /* padding-top: 0.7rem; */
       padding-right:0.4rem;
       height: 3.7rem;
   }
