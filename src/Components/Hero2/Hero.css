@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* body {
+    /* height: 1000vh; */
+    /* padding-top: 80vh; */
+    /* background: black; */
+ 
+
+.video {
+    height: 100vh;
+    width: 100vw;
+}
+
+.video video {
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+}
+
+.hero .heading,
+.heading-shoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+}
+
+.hero .heading .line-black {
+    height: 2px;
+    flex: 1 1;
+    background: black;
+}
+
+.hero .heading .line-orange {
+    height: 2px;
+    flex: 1 1;
+    background: rgb(255, 125, 0);
+}
+
+.hero .heading h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 10rem;
+    letter-spacing: 1rem;
+    /* font-family: monospace; */
+    font-weight: 300;
+}
+.hero .heading h2 span {
+    color: rgb(255, 125, 0);
+}
+
+.heading-shoes span {
+    color: black;
+    font-size: 8rem;
+    font-weight: lighter;
+    font-family: "Raleway";
+    margin: 0rem 1rem;
+}
+.heading-shoes span:nth-of-type(2n) {
+    color: orange;
+}
+
+.photo-frame,
+.photo-frame-2 {
+    display: flex;
+
+    position: relative;
+    margin: 200px 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame {
+    flex-wrap: wrap;
+}
+.photo-frame-2 {
+    flex-wrap: wrap-reverse;
+}
+
+.photo-frame .right-image {
+    z-index: 18;
+    right: 2rem;
+    bottom: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex: 1 1 300px;
+    position: relative;
+    /* mix-blend-mode: difference; */
+}
+
+.image img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.photo-frame .left-image {
+    top: 5rem;
+    left: 2rem;
+    z-index: 18;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.photo .image-overlay {
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    mix-blend-mode: difference;
+}
+
+.photo-frame .back-overlay {
+    position: absolute;
+    top: -20%;
+    left: 00%;
+    /* transform: translate(-50%, -50%); */
+    /* background: linear-gradient(rgb(255, 125, 0), orange); */
+    /* background: linear-gradient(to right, black, rgb(255, 125, 0)); */
+    background: linear-gradient(rgba(255, 234, 47, 0.893), whitesmoke);
+    height: 120%;
+    width: 60%;
+    z-index: -2;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.photo-frame .back-overlay-2 {
+    position: absolute;
+    top: 20%;
+    /* mix-blend-mode: difference; */
+    right: 0%;
+    background: linear-gradient(to top, rgb(255, 128, 37), whitesmoke);
+    height: 120%;
+    width: 60%;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.photo-frame-2 .back-overlay {
+    position: absolute;
+    top: -20%;
+    right: 0%;
+    background: linear-gradient(to bottom, rgb(97, 255, 192), whitesmoke);
+    height: 120%;
+    width: 60%;
+    z-index: -2;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.photo-frame-2 .back-overlay-2 {
+    position: absolute;
+    top: 20%;
+    /* mix-blend-mode: difference; */
+    left: 0%;
+    height: 120%;
+    background: linear-gradient(to top, rgb(119, 203, 255), whitesmoke);
+    width: 60%;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.photo h2 {
+    mix-blend-mode: difference;
+    font-size: 5rem;
+}
+
+.photo-frame-2 .right-image {
+    z-index: 18;
+    right: 2rem;
+    top: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.photo-frame-2 .left-image {
+    /* mix-blend-mode: difference; */
+    bottom: 5rem;
+    left: 2rem;
+    z-index: 20;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* single pic */
+.single-pic {
+    margin-top: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-pic .single-frame {
+    position: relative;
+    width: 50vw;
+}
+
+.single-pic .single-frame .back-overlay {
+    position: absolute;
+    top: -100px;
+    right: -300px;
+    background: linear-gradient(lightblue, whitesmoke);
+    height: 100%;
+    width: 130%;
+    z-index: -1;
+}
+
+.single-pic .single-frame .front-overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    color: white;
+    z-index: 999;
+    background: transparent;
+    mix-blend-mode: difference;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single-pic .single-frame .front-overlay h2 {
+    font-size: 11rem;
+    mix-blend-mode: difference;
+}
+
+.single-pic .single-frame img {
+    object-fit: cover;
+    width: 100%;
+}
+/* end of single pic */
+
+@media only screen and (max-width: 1230px) {
+    .photo h2 {
+        font-size: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .photo h2 {
+        font-size: 2.8rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .photo h2 {
+        font-size: 2.3rem;
+    }
+}
+
+@media only screen and (max-width: 701px) {
+    .photo h2 {
+        font-size: 2.8rem;
+    }
+    .photo-frame-2 .left-image,
+    .photo-frame-2 .right-image,
+    .photo-frame .left-image,
+    .photo-frame .right-image {
+        top: 0;
+    }
+    .image {
+        mix-blend-mode: unset;
+    }
+}

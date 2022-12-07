@@ -1,0 +1,147 @@
+.pro-card {
+    cursor: pointer;
+    font-family: "Montserrat";
+    position: relative;
+    height: 400px;
+    width: 300px;
+    background: rgb(255, 233, 213);
+    background: linear-gradient(
+        45deg,
+        rgba(220, 220, 220, 0.321) 50%,
+        rgba(151, 151, 151, 0.178) 50% 50%
+    );
+    overflow: hidden;
+    /* background: linear-gradient(
+        rgba(255, 123, 0, 0.08),
+        rgba(255, 123, 0, 0.08)
+    ); */
+
+    flex: 1 1 300px;
+}
+
+.filter-container .filter-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pro-card .circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+
+    background: white;
+    /* background: rgb(255, 125, 0);    */
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: 0.5s;
+}
+
+.pro-card .pro-info {
+    z-index: 88;
+    transition: 0.3s;
+    /* backdrop-filter: blur(0.4rem); */
+    background: rgb(0, 0, 0, 0.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.pro-card:hover .circle {
+    transform: scale(3);
+}
+
+.pro-card:hover .pro-info {
+    opacity: 1;
+}
+
+.pro-card:hover .pro-img img {
+    transform: scale(1.3);
+}
+
+.pro-card:hover .pro-info h2,
+.pro-card:hover .pro-info h3,
+.pro-card:hover .pro-info button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pro-card .pro-info h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+    transition-delay: 0.2s;
+    text-transform: capitalize;
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+}
+
+.pro-card .pro-info h2:hover {
+    letter-spacing: 0.5rem;
+}
+
+.pro-card .pro-info h3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+    transition-delay: 0.3s;
+    text-transform: capitalize;
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+}
+
+.pro-card .pro-info button {
+    /* border-radius: 0.5rem; */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+    /* transition-delay: 0.3s; */
+    cursor: pointer;
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    padding: 1rem 4rem;
+    border: none;
+    background: rgb(255, 125, 0);
+    color: white;
+}
+
+.pro-card .pro-info button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 12px -3px rgb(255, 125, 0);
+    background: black;
+    color: rgb(255, 125, 0);
+    outline: 1px solid white;
+}
+
+.pro-card .pro-img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.pro-card .pro-img img {
+    transition: 0.3s;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}

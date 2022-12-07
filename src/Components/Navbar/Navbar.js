@@ -9,16 +9,49 @@ import Modal from '../Modal/Modal'
 import Menu from '../Menu/Menu'
 import Dropdown from '../Dropdown/Dropdown'
 import Login from '../Modal/Login'
+import {useSelector,useDispatch} from 'react-redux'
 import { Router,Link} from 'react-router-dom';
-const Navbar = ({setUser,user,navcol}) => {
+import { loginFailure, loginStart, loginSuccess } from "../../redux/userReducer"
+import { ShoppingBagOutlined } from '@mui/icons-material'
+
+import {Badge} from '@material-ui/core'
+const Navbar = ({navcol}) => {
   const [showModal,setShowModal ]=useState(false)
+  const dispatch=useDispatch()
   const [showLogModal,setShowLogModal ]=useState(false)
   const [ham,setHam ]=useState(window.innerWidth<960?true:false)
   const [Others,setOthers]= useState(false)
   const [isOpen, toggleOpen] = useCycle(false, true);
-  
-  const logout = () => {
-    window.open("http://localhost:5000/auth/logout", "_self");
+  const userName=useSelector((state)=>state.user.currentUser)
+  const quantity=useSelector((state)=>state.cart.quantity)
+  //const [user,setUser]=useState("")
+  const logout = async () => {
+    //window.open("http://localhost:3002/api/users/auth/logout", "_self");
+    try{
+    const r = await fetch("http://localhost:3002/api/users/auth/logout",{
+         method:"POST",
+         credentials:"include",
+         headers: {
+          
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+          Authorisation:"abcd"
+        
+        },
+        body:JSON.stringify({
+          logout:'true'
+        })
+       
+
+       
+    })
+   
+    dispatch(loginSuccess({username:null}))
+  }
+  catch(e){
+    console.log(e)
+  }
   };
   const sidebarVariants = {
       open: {
@@ -70,6 +103,12 @@ const Navbar = ({setUser,user,navcol}) => {
       window.removeEventListener('resize',reSize);
     };
    },[navcol])
+  //  useEffect(()=>{
+
+  //   console.log(userName)
+  //  setUser(userName)
+  //  },[userName])
+   console.log(userName)
    const reSize=()=>{
     if(window.innerWidth<960)
     {
@@ -126,7 +165,7 @@ const Navbar = ({setUser,user,navcol}) => {
     
     <div >
     <Modal showModal={showModal} setShowModal={setShowModal}/>
-    <Login showLogModal={showLogModal} setShowLogModal={setShowLogModal} setUser={setUser} user={user}/>
+    <Login showLogModal={showLogModal} setShowLogModal={setShowLogModal}/>
     {/* <AnimatePresence exitBeforeEnter> */}
    {ham &&( 
        <motion.div className="background"  variants={sidebarVariants}  initial={false} animate={isOpen ? "open" : "closed" }>
@@ -143,7 +182,7 @@ const Navbar = ({setUser,user,navcol}) => {
     {ham ? (<Ham toggle={()=>{toggleOpen()}} isOpen={isOpen}/>):
    (
    <React.Fragment>
-    {user===null ?(
+    {userName===null ?(
   <motion.div whileTap={{ scale: 0.75 }}  onClick={()=>{setShowLogModal(true)}}>
   <div className="icon">
     Sign In
@@ -151,13 +190,15 @@ const Navbar = ({setUser,user,navcol}) => {
   </motion.div>):( 
     <motion.div whileTap={{ scale: 0.75 }} >
   <div className="icon" onClick={logout}>
-    Log Out
+    Log Out {userName}
     </div>
     </motion.div>)}
    
   <motion.div whileTap={{ scale: 0.75 }}>
- <Link to='/c'>
-  <FontAwesomeIcon className="icon" icon={ faBagShopping } />
+ <Link to='/cart'>
+  <Badge badgeContent={quantity} color="primary"> 
+   <ShoppingBagOutlined fontSize="2rem" color="black"/>
+  </Badge>
   </Link>
   </motion.div>
   </React.Fragment>

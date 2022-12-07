@@ -4,6 +4,12 @@ import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper';
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
+// import 'swiper/swiper-bundle.css'
+// import 'swiper/swiper-bundle.min.css'
+ //import 'swiper/swiper.min.css'
+  //import 'swiper/modules/navigation/navigation.scss';
+// import 'swiper/modules/thumbs/thumbs.min.css';
+// import 'swiper/modules/pagination/pagination.min.css'
 import './Dropdown.css';
 
 SwiperCore.use([Navigation, Pagination, Controller, Thumbs]);

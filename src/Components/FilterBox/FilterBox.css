@@ -1,0 +1,44 @@
+.filter-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 123, 0, 0.14),
+        rgba(255, 123, 0, 0.084)
+    );
+    background: linear-gradient(
+        45deg,
+        rgba(151, 151, 151, 0.178),
+        rgba(151, 151, 151, 0.178)
+    );
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 2rem;
+}
+
+.filter-container .filter-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.filter-container h2 {
+    font-family: "Montserrat";
+    letter-spacing: 0.3rem;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+@media only screen and (max-width: 530px) {
+    .filter-container .filter-box {
+        flex-direction: column;
+    }
+    .filter-container {
+        align-items: flex-start;
+        justify-content: center;
+    }
+}

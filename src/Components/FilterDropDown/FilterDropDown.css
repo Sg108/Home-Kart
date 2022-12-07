@@ -1,0 +1,75 @@
+.filter-menu {
+    position: relative;
+    width: 15rem;
+}
+
+.filter-overlay {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 89;
+    background: transparent;
+}
+
+.filter-menu .filter-menu-head {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+
+    cursor: pointer;
+    transition: 1s;
+}
+
+.filter-menu-active {
+    background: black;
+    color: white;
+}
+
+.filter-menu-inactive {
+    background: white;
+    color: black;
+}
+
+.filter-menu .filter-menu-head h2 {
+    font-family: "Montserrat";
+    font-size: 1.3rem;
+
+    letter-spacing: 0.2rem;
+}
+
+.filter-menu .filter-menu-drop {
+    /* padding: 1rem; */
+    /* background: orange; */
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 99;
+    /* gap: 1rem; */
+    justify-content: center;
+}
+
+.filter-menu .filter-menu-drop .filter-menu-drop-item {
+    position: relative;
+    z-index: 199;
+    cursor: pointer;
+    border-top: 1px solid black;
+    font-family: "Montserrat";
+    font-size: 1rem;
+
+    letter-spacing: 0.2rem;
+    padding: 1.2rem 1.5rem;
+    background: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.filter-menu .filter-menu-drop .filter-menu-drop-item:hover {
+    background: rgb(255, 125, 0);
+}

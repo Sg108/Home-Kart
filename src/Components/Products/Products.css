@@ -1,0 +1,38 @@
+.products-container {
+    width: 100%;
+    padding: 2rem;
+}
+
+.products-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.products-container .products-heading {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.products-container .products-heading h2 {
+    font-size: 3rem;
+    font-family: "Montserrat";
+    letter-spacing: 0.3rem;
+    font-weight: 300;
+}
+
+.products-container .products-heading h2 span {
+    /* color: rgb(255, 125, 0); */
+}
+
+.products-container .products-heading .right-line {
+    height: 1px;
+    flex: 1 1;
+    background: rgb(255, 125, 0);
+}
