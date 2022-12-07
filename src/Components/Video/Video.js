@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 //import {Link} from 'react-router-dom'
 //import img from '../../images/clothing.jpg'
 //import video from '../../images/Bene.mp4'
-import video from '../../images/bene_video.mp4'
+//import video from '../../images/bene_video.mp4'
 import Navbar from '../Navbar/Navbar'
 import {motion} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -52,13 +52,13 @@ else{
     <div className='container'>
       {/* <Navbar ham={ham} setHam={setHam}/> */}
       <div className='video-content'>
-      <video class="myvideo" autoPlay muted loop> 
+      {/* <video class="myvideo" autoPlay muted loop> 
         <source
           src={video}
           type="video/mp4"
         />
        
-    </video>
+    </video> */}
               <motion.div className='sound' onClick={volumeFunction}  whileTap={{ scale: 0.75 }}>
               <FontAwesomeIcon className="play-button" icon={sound?faVolumeHigh:faVolumeMute} />
               </motion.div>
