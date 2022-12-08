@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import "./Product.css"
-import styled from 'styled-components';
-import { Add, Remove } from "@material-ui/icons";
+import styled from "styled-components"
+import { Add, Remove } from "@material-ui/icons"
 import pro1 from "../../Images-2/pro1.png"
 import pro2 from "../../Images-2/pro2.png"
 import pro3 from "../../Images-2/pro3.png"
 import pro4 from "../../Images-2/pro4.png"
 import pro5 from "../../Images-2/pro5.png"
 import axios from "axios"
-import {data} from "../../data"
+import { data } from "../../data"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { motion, AnimatePresence } from "framer-motion"
 import "swiper/css"
@@ -17,7 +17,7 @@ import "swiper/css/navigation"
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper"
 import { addProduct } from "../../redux/cartRedux"
 import { useParams } from "react-router-dom"
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux"
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
 const proVariants = {
@@ -38,39 +38,42 @@ const proVariants = {
     },
 }
 const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+`
 
 const Amount = styled.span`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
-`;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5px;
+`
 
 export const Product = () => {
-    const { id } = useParams()
-    console.log(id,data[id])
-    const dispatch=useDispatch()
-    const images = [pro1, pro2, pro3, pro4, pro5]
+    let { id } = useParams()
+    id--
+
+    const data = useSelector((state) => state.product.products)
+    console.log(data, id)
+    const dispatch = useDispatch()
+    const images = data[id].images
     const [cur, setCur] = useState(0)
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(1)
     const handleQuantity = (type) => {
         if (type === "dec") {
-          quantity > 1 && setQuantity(quantity - 1);
+            quantity > 1 && setQuantity(quantity - 1)
         } else {
-          setQuantity(quantity + 1);
+            setQuantity(quantity + 1)
         }
-      };
+    }
 
-    function addToCartFunction(){
-         dispatch(addProduct({...data[id],quantity:quantity}))
+    function addToCartFunction() {
+        dispatch(addProduct({ ...data[id], quantity: quantity }))
     }
     function LoadRazorpay() {
         const script = document.createElement("script")
@@ -226,25 +229,23 @@ export const Product = () => {
             </div>
             <div className="right">
                 <div className="info-box">
-                    <div className="info-heading">Jordan Air 12x</div>
+                    <div className="info-heading">{data[id].title}</div>
                     <div className="hr-line"></div>
                     <div className="info-desc">
-                        <h2>Description</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Accusamus saepe qui odio officia quas et.
-                            Nulla corrupti, ad hic accusamus facere laboriosam,
-                            officiis exercitationem, illo culpa aspernatur
-                        </p>
+                        <h2>description</h2>
+                        <p>{data[id].description}</p>
                     </div>
                     <div className="hr-line"></div>
                     <div className="info-price">${data[id].price}</div>
                     <AmountContainer>
-              <Remove onClick={() => handleQuantity("dec")} />
-              <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("inc")} />
-            </AmountContainer>
-                    <div className="info-button" onClick={() => addToCartFunction()}>
+                        <Remove onClick={() => handleQuantity("dec")} />
+                        <Amount>{quantity}</Amount>
+                        <Add onClick={() => handleQuantity("inc")} />
+                    </AmountContainer>
+                    <div
+                        className="info-button"
+                        onClick={() => addToCartFunction()}
+                    >
                         <h3>Add To Cart</h3>
                     </div>
                 </div>
