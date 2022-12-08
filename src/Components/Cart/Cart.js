@@ -277,7 +277,7 @@ else{
                 <ProductAmountContainer>
                   <Add />
                   <ProductAmount>{item.quantity}</ProductAmount>
-                  <Delete onClick={()=>{deleteFromCart(item,id)}}/>
+                  <Delete style={{cursor:"pointer",fontSize:"2rem"}}onClick={()=>{deleteFromCart(item,id)}}/>
                 </ProductAmountContainer>
                 <ProductPrice>$ {item.price}</ProductPrice>
               </PriceDetail>

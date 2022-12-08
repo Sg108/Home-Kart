@@ -63,7 +63,7 @@ function App() {
                         path="/"
                         element={
                             <>
-                                <Navbar setUser={setUser} user={user} navcol={navcol}/>
+                               
                                 
                                 <Sidebar setimg={setImg} />
                                 <ImageView imgno={img} />

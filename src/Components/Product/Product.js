@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import "./Product.css"
 import styled from "styled-components"
 import { Add, Remove } from "@material-ui/icons"
@@ -56,12 +56,18 @@ const Amount = styled.span`
 
 export const Product = () => {
     let { id } = useParams()
-    id--
+    // id--
 
-    const data = useSelector((state) => state.product.products)
+    const [data, setData] = useState(null)
+    useEffect(() => {
+        fetch(`https://dummyjson.com/products/${id}`)
+            .then((res) => res.json())
+            .then((res) => setData(res))
+    }, [])
+    // const data = useSelector((state) => state.product.products)
     console.log(data, id)
     const dispatch = useDispatch()
-    const images = data[id].images
+    const images = data ? data.images:[]
     const [cur, setCur] = useState(0)
     const [quantity, setQuantity] = useState(1)
     const handleQuantity = (type) => {
@@ -73,7 +79,7 @@ export const Product = () => {
     }
 
     function addToCartFunction() {
-        dispatch(addProduct({ ...data[id], quantity: quantity }))
+        dispatch(addProduct({ ...data, quantity: quantity }))
     }
     function LoadRazorpay() {
         const script = document.createElement("script")
@@ -147,6 +153,7 @@ export const Product = () => {
     }
 
     return (
+        data ? 
         <div className="product">
             <div className="left">
                 {/* <div className="info-color"> */}
@@ -229,14 +236,14 @@ export const Product = () => {
             </div>
             <div className="right">
                 <div className="info-box">
-                    <div className="info-heading">{data[id].title}</div>
+                    <div className="info-heading">{data.title}</div>
                     <div className="hr-line"></div>
                     <div className="info-desc">
                         <h2>description</h2>
-                        <p>{data[id].description}</p>
+                        <p>{data.description}</p>
                     </div>
                     <div className="hr-line"></div>
-                    <div className="info-price">${data[id].price}</div>
+                    <div className="info-price">${data.price}</div>
                     <AmountContainer>
                         <Remove onClick={() => handleQuantity("dec")} />
                         <Amount>{quantity}</Amount>
@@ -251,5 +258,9 @@ export const Product = () => {
                 </div>
             </div>
         </div>
+    :(
+    <>
+    </>)
+
     )
 }
