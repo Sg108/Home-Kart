@@ -7,7 +7,7 @@
     /* background-color:black; */
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: sticky;
     top:0;
     z-index:1000;
     
@@ -70,14 +70,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:transparent;
+    background-color:white;
     transition: background-color 2s;
     padding:1rem
   }
 
-.lower-deck:hover{
+/* .lower-deck:hover{
   background-color:white !important;
-}
+} */
 
 .categories{
     display: flex;
@@ -105,7 +105,7 @@
    font-size: 1.5rem;
    letter-spacing: 0.1rem;
       border: none; 
-   color:white;
+   color:black;
    /* //transition:color 300ms ease-in
     transition: width 2s;
 } */

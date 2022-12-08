@@ -1,5 +1,6 @@
 import React, { useState,useEffect} from 'react';
 import './App.css';
+import axios from 'axios'
 import { motion, AnimatePresence } from "framer-motion"
 import Loading from "./Components/Loading/Loading"
 import Video from './Components/Video/Video'
@@ -17,6 +18,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [navcol,setNavcol]=useState(true)
  
+  
   // useEffect(() => {
   //   // const getUser = () => {
   //   //   fetch("http://localhost:5000/auth/login/success", {
@@ -61,12 +63,13 @@ function App() {
       
     
       <Router>
-      <Navbar setUser={setUser} user={user} navcol={navcol}/>
       <Routes>
       <Route
                         path="/"
                         element={
                             <>
+                                <Navbar setUser={setUser} user={user} navcol={navcol}/>
+                                
                                 <Sidebar setimg={setImg} />
                                 <ImageView imgno={img} />
                                 <Parallax>
@@ -84,10 +87,24 @@ function App() {
                         }
                     />
         {/* <Route exact path='/' element={<Video setNavcol={setNavcol}/>}></Route> */}
-        <Route  path='/cart' element={< Cart setNavcol={setNavcol} navcol={navcol}/>}></Route>
-        <Route path="/products" element={<Products />} />
+        <Route  path='/cart' element={
+        <>
+        <Navbar setUser={setUser} user={user} navcol={navcol}/>
+        < Cart setNavcol={setNavcol} navcol={navcol}/>
+        </>
+    }></Route>
+   
+        <Route path="/products" element={
+            <>
+             <Navbar setUser={setUser} user={user} navcol={navcol}/>
+        <Products />
+        </>} />
 
-          <Route path="/products/:id" element={<Product />} />
+          <Route path="/products/:id" element={
+             <>
+             <Navbar setUser={setUser} user={user} navcol={navcol}/>
+          <Product />
+          </>} />
     </Routes>
    
     </Router>

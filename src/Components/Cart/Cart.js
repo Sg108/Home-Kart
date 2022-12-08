@@ -7,7 +7,8 @@ import {
   Switch,
   useLocation
 } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { deleteProduct } from "../../redux/cartRedux"
 import styled from "styled-components";
 // import Announcement from "../components/Announcement";
 // import Footer from "../components/Footer";
@@ -16,7 +17,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
 position:relative;
-top:110px;
+
 ${mobile({ top: "10px" })}
 `;
 
@@ -217,6 +218,7 @@ const Button = styled.button`
 
 const Cart = ({setNavcol,navcol}) => {
   let Location = useLocation();
+  const dispatch=useDispatch()
   const cart=useSelector((state)=>state.cart.products)
   const total=useSelector((state)=>state.cart.total)
   useEffect(()=>{
@@ -230,6 +232,9 @@ else{
   setNavcol(true)
 }
   },[Location])
+  function deleteFromCart(item,id){
+       dispatch(deleteProduct({...item,index:id}))
+  }
   return (
     <>
     <Container>
@@ -268,7 +273,7 @@ else{
                 <ProductAmountContainer>
                   <Add />
                   <ProductAmount>{item.quantity}</ProductAmount>
-                  <Delete />
+                  <Delete onClick={()=>{deleteFromCart(item,id)}}/>
                 </ProductAmountContainer>
                 <ProductPrice>$ {item.price}</ProductPrice>
               </PriceDetail>
@@ -301,12 +306,12 @@ else{
       {/* <Footer /> */}
     
     </Container>
-      <div className="flag">
+      {/* <div className="flag">
       <div className="orange"></div>
       <div  className="white"></div>
       <div  className="black"></div>
       <div className="orange"></div>
-      </div>
+      </div> */}
 </>
   );
 };

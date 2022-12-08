@@ -36,7 +36,7 @@ const Navbar = ({navcol}) => {
           Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
-          Authorisation:"abcd"
+          
         
         },
         body:JSON.stringify({
@@ -78,22 +78,22 @@ const Navbar = ({navcol}) => {
 
   useEffect(()=>{
     // console.log(document.querySelector('.navbar').offsetHeight)
-    console.log(navcol)
-    if(!navcol)
-    {
-      let x=document.querySelectorAll('.button')
-      x.forEach((y)=>{
-        y.style.color='black'
-      })
-      }
-        else
-        {
-          let x=document.querySelectorAll('.button')
-          x.forEach((y)=>{
-            y.style.color='white'
-          })
+    // console.log(navcol)
+    // if(!navcol)
+    // {
+    //   let x=document.querySelectorAll('.button')
+    //   x.forEach((y)=>{
+    //     y.style.color='black'
+    //   })
+    //   }
+    //     else
+    //     {
+    //       let x=document.querySelectorAll('.button')
+    //       x.forEach((y)=>{
+    //         y.style.color='white'
+    //       })
 
-        }
+    //     }
     // parent(document.querySelector('.navbar').offsetHeight)
     window.addEventListener('resize',reSize)
     window.addEventListener('click',func)
@@ -154,16 +154,16 @@ const Navbar = ({navcol}) => {
   }
    else if(window.location.href.split('/').slice(-1)[0]===''){
     console.log( document.querySelectorAll("[data-dropdown].active").length)
-    lower.style.backgroundColor="transparent"
+    // lower.style.backgroundColor="transparent"
    
-    document.querySelectorAll(".button").forEach(x=>{
-      x.style.color="white"
-     })
+    // document.querySelectorAll(".button").forEach(x=>{
+    //   x.style.color="white"
+    //  })
    }
   }
   return (
     
-    <div >
+    <div style={{position:"sticky",top:"0",zIndex:"1000"}}>
     <Modal showModal={showModal} setShowModal={setShowModal}/>
     <Login showLogModal={showLogModal} setShowLogModal={setShowLogModal}/>
     {/* <AnimatePresence exitBeforeEnter> */}
@@ -197,7 +197,7 @@ const Navbar = ({navcol}) => {
   <motion.div whileTap={{ scale: 0.75 }}>
  <Link to='/cart'>
   <Badge badgeContent={quantity} color="primary"> 
-   <ShoppingBagOutlined fontSize="2rem" color="black"/>
+   <ShoppingBagOutlined style={{height:"3rem" ,width:"3rem"}} color="black"/>
   </Badge>
   </Link>
   </motion.div>

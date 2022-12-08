@@ -93,7 +93,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
             <p>By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b></p>
            
-            <div className="google_signup">
+            {/* <div className="google_signup">
   <button className="signup_button">
     <img width="15px"  alt="Google login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
     Sign up with Google
@@ -104,7 +104,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
     <img width="15px"  alt="Google login" src="https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-instagram-new-logo-vector-download-13.png" />
     Sign up with Instagram
   </button>
-</div>
+</div> */}
             
 
         </motion.div>):(
@@ -114,15 +114,15 @@ const Login = ({showLogModal,setShowLogModal}) => {
             <form className="form"  onSubmit={handleLogin}>
                 <input type="text" placeholder="username" value={UserLogin} onChange={(e)=>{setUserLogin(e.target.value)}}/>
                 <input type="password" placeholder="password" value={passLogin} onChange={(e)=>{setPassLogin(e.target.value)}}/>
-                <button type="submit">
+                <button style={{marginTop:"2rem"}}type="submit">
                 LOG IN
             </button>
             </form>
-            <a><p>Create a new account</p></a>
+            {/* <a><p>Create a new account</p></a> */}
             <div className="google_signup">
           
             </div>
-            <div className="google_signup" onClick={google }>
+            {/* <div className="google_signup" onClick={google }>
   <button className="signup_button">
     <img width="15px"  alt="Google login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
     Sign in with Google
@@ -133,7 +133,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
     <img width="15px"  alt="Google login" src="https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-instagram-new-logo-vector-download-13.png" />
     Sign in with Instagram
   </button>
-  </div>
+  </div> */}
         </div>)}
         </motion.div>
     </motion.div>)}
