@@ -8,15 +8,15 @@ export const Card = (props) => {
         <div className="pro-card">
             <div className="circle"></div>
             <div className="pro-info">
-                <h2 className="pro-name">{props.item.name}</h2>
+                <h2 className="pro-name">{props.item.title}</h2>
                 <h3 className="pro-price">{props.item.price}</h3>
-                <Link to= {`/products/${props.index}`} >
+                <Link to={`/products/${props.item.id}`}>
                     <button className="pro-button">Shop</button>
                 </Link>
             </div>
             <div className="pro-img">
-                {console.log(`../../Images-2/${props.item.photo}`)}
-                <img src={require(`../../Images-2/${props.item.photo}`)} alt="" />
+                {/* {console.log(`../../Images-2/${props.item.thumbnail}`)} */}
+                <img src={props.item.thumbnail} alt="" />
             </div>
         </div>
     )
