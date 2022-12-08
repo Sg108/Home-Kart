@@ -212,7 +212,7 @@ const Navbar = ({navcol}) => {
               <motion.span whileHover={{ scale: 0.75 }}>N</motion.span>
               <motion.span whileHover={{ scale: 0.75 }}>E</motion.span>
               {/* <motion.span whileHover={{ scale: 0.75 }}>&nbsp;</motion.span> */}
-              <motion.img class="logo" src={logo} initial={{scale:0.9}}  whileHover={{ scale: 0.75 }}/>
+              <motion.img className="logo" src={logo} initial={{scale:0.9}}  whileHover={{ scale: 0.75 }}/>
               {/* <motion.span whileHover={{ scale: 0.75 }}>&nbsp;</motion.span> */}
               <motion.span whileHover={{ scale: 0.75 }}>C</motion.span>
               <motion.span whileHover={{ scale: 0.75 }}>L</motion.span>
