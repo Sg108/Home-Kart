@@ -13,7 +13,6 @@ import { Product } from "./Components/Product/Product"
 import { Products } from "./Components/Products/Products"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import Parallax from "react-rellax"
-
 function App() {
     const [user, setUser] = useState(null)
     const [navcol, setNavcol] = useState(true)
