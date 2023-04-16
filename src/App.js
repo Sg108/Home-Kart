@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react"
 import "./App.css"
 import { motion, AnimatePresence } from "framer-motion"
 import Loading from "./Components/Loading/Loading"
-import Video from "./Components/Video/Video"
 import Navbar from "./Components/Navbar/Navbar"
 import { Hero } from "./Components/Hero2/Hero"
 import Login from "./Components/Modal/Login"
 import Cart from "./Components/Cart/Cart"
-import { Sidebar } from "./Components/Sidebar/Sidebar"
-import { ImageView } from "./Components/ImageView/ImageView"
+
 import { Product } from "./Components/Product/Product"
 import { Products } from "./Components/Products/Products"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import Parallax from "react-rellax"
+
 
 function App() {
     const [user, setUser] = useState(null)
@@ -64,12 +63,7 @@ function App() {
                         element={
                             <>
                                
-                                
-                                <Sidebar setimg={setImg} />
-                                <ImageView imgno={img} />
-                                <Parallax>
-                                    <Hero />
-                                </Parallax>
+                               <Products/>
                             </>
                         }
                     />
@@ -96,3 +90,4 @@ function App() {
 }
 
 export default App
+

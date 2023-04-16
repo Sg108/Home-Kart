@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import  Navbar from '../Navbar/Navbar'
 import './Cart.css'
+
+import axios from 'axios'
 import { Add, Delete } from '@mui/icons-material';
 import {
   BrowserRouter as Router,
@@ -225,6 +227,73 @@ const Cart = ({setNavcol,navcol}) => {
   const dispatch=useDispatch()
   const cart=useSelector((state)=>state.cart.products)
   const total=useSelector((state)=>state.cart.total)
+  function LoadRazorpay() {
+    const script = document.createElement("script")
+    script.src = "https://checkout.razorpay.com/v1/checkout.js"
+    script.onerror = () => {
+        alert("Razorpay SDK failed to load. Are you online?")
+    }
+    script.onload = async () => {
+        try {
+            // setLoading(true)
+            const result = await axios.post(
+                "https://ekartapi108.azurewebsites.net/api/payments/create-order",
+                {
+                    amount: total.toString()+"00",
+                }
+            )
+            console.log(result)
+            const { amount, id: order_id, currency } = result.data
+            const {
+                data: { key: razorpayKey },
+            } = await axios.get(
+                "https://ekartapi108.azurewebsites.net/api/payments/get-razorpay-key"
+            )
+
+            const options = {
+                key: razorpayKey,
+                amount: amount.toString(),
+                currency: currency,
+                name: "example name",
+                description: "example transaction",
+                order_id: order_id,
+                handler: async function (response) {
+                    const result = await axios.post(
+                        "https://ekartapi108.azurewebsites.net/api/payments/pay-order",
+                        {
+                            amount: amount,
+                            razorpayPaymentId: response.razorpay_payment_id,
+                            razorpayOrderId: response.razorpay_order_id,
+                            razorpaySignature: response.razorpay_signature,
+                        }
+                    )
+                    alert(result.data.msg)
+                    // fetchOrders()
+                },
+                prefill: {
+                    name: "example name",
+                    email: "email@example.com",
+                    contact: "111111",
+                },
+                notes: {
+                    address: "example address",
+                },
+                theme: {
+                    color: "#80c0f0",
+                },
+            }
+
+            // setLoading(false)
+            const paymentObject = new window.Razorpay(options)
+            paymentObject.open()
+        } catch (err) {
+            alert(err)
+            // setLoading(false)
+        }
+    }
+    document.body.appendChild(script)
+}
+
   useEffect(()=>{
  
     console.log(window.location.href.split('/').slice(-1)[0])
@@ -252,7 +321,7 @@ else{
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton type="filled" onClick={LoadRazorpay}>CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -303,7 +372,7 @@ else{
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button onClick={LoadRazorpay}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>

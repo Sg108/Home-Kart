@@ -2,11 +2,7 @@ import React, { useState,useEffect } from "react"
 import "./Product.css"
 import styled from "styled-components"
 import { Add, Remove } from "@material-ui/icons"
-import pro1 from "../../Images-2/pro1.png"
-import pro2 from "../../Images-2/pro2.png"
-import pro3 from "../../Images-2/pro3.png"
-import pro4 from "../../Images-2/pro4.png"
-import pro5 from "../../Images-2/pro5.png"
+
 import axios from "axios"
 import { data } from "../../data"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -81,73 +77,7 @@ export const Product = () => {
     function addToCartFunction() {
         dispatch(addProduct({ ...data, quantity: quantity }))
     }
-    function LoadRazorpay() {
-        const script = document.createElement("script")
-        script.src = "https://checkout.razorpay.com/v1/checkout.js"
-        script.onerror = () => {
-            alert("Razorpay SDK failed to load. Are you online?")
-        }
-        script.onload = async () => {
-            try {
-                // setLoading(true)
-                const result = await axios.post(
-                    "http://localhost:3000/api/payments/create-order",
-                    {
-                        amount: "500" + "00",
-                    }
-                )
-                console.log(result)
-                const { amount, id: order_id, currency } = result.data
-                const {
-                    data: { key: razorpayKey },
-                } = await axios.get(
-                    "http://localhost:3000/api/payments/get-razorpay-key"
-                )
-
-                const options = {
-                    key: razorpayKey,
-                    amount: amount.toString(),
-                    currency: currency,
-                    name: "example name",
-                    description: "example transaction",
-                    order_id: order_id,
-                    handler: async function (response) {
-                        const result = await axios.post(
-                            "http://localhost:3000/api/payments/pay-order",
-                            {
-                                amount: amount,
-                                razorpayPaymentId: response.razorpay_payment_id,
-                                razorpayOrderId: response.razorpay_order_id,
-                                razorpaySignature: response.razorpay_signature,
-                            }
-                        )
-                        alert(result.data.msg)
-                        // fetchOrders()
-                    },
-                    prefill: {
-                        name: "example name",
-                        email: "email@example.com",
-                        contact: "111111",
-                    },
-                    notes: {
-                        address: "example address",
-                    },
-                    theme: {
-                        color: "#80c0f0",
-                    },
-                }
-
-                // setLoading(false)
-                const paymentObject = new window.Razorpay(options)
-                paymentObject.open()
-            } catch (err) {
-                alert(err)
-                // setLoading(false)
-            }
-        }
-        document.body.appendChild(script)
-    }
-
+   
     const handleClick = (state) => {
         setCur(state)
     }
