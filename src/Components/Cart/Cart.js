@@ -226,6 +226,7 @@ const Cart = ({setNavcol,navcol}) => {
   let Location = useLocation();
   const dispatch=useDispatch()
   const cart=useSelector((state)=>state.cart.products)
+  const User = useSelector((state)=>state.user.curentUser)
   const total=useSelector((state)=>state.cart.total)
   function LoadRazorpay() {
     const script = document.createElement("script")
@@ -254,7 +255,7 @@ const Cart = ({setNavcol,navcol}) => {
                 key: razorpayKey,
                 amount: amount.toString(),
                 currency: currency,
-                name: "example name",
+                name: User,
                 description: "example transaction",
                 order_id: order_id,
                 handler: async function (response) {
@@ -271,9 +272,9 @@ const Cart = ({setNavcol,navcol}) => {
                     // fetchOrders()
                 },
                 prefill: {
-                    name: "example name",
+                    name: User,
                     email: "email@example.com",
-                    contact: "111111",
+                    contact: "95604849853",
                 },
                 notes: {
                     address: "example address",
