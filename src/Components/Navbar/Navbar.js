@@ -206,22 +206,19 @@ const Navbar = ({navcol}) => {
 }
   </div>
       
-  <div className='heading'><motion.span whileHover={{ scale: 0.75 }}>B</motion.span>
+  <div className='heading'><motion.span whileHover={{ scale: 0.75 }}>H</motion.span>
 
-              <motion.span whileHover={{ scale: 0.75 }}>É</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>N</motion.span>
+              <motion.span whileHover={{ scale: 0.75 }}>O</motion.span>
+              <motion.span whileHover={{ scale: 0.75 }}>M</motion.span>
               <motion.span whileHover={{ scale: 0.75 }}>E</motion.span>
               {/* <motion.span whileHover={{ scale: 0.75 }}>&nbsp;</motion.span> */}
               <motion.img className="logo" src={logo} initial={{scale:0.9}}  whileHover={{ scale: 0.75 }}/>
               {/* <motion.span whileHover={{ scale: 0.75 }}>&nbsp;</motion.span> */}
-              <motion.span whileHover={{ scale: 0.75 }}>C</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>L</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>O</motion.span>
+              <motion.span whileHover={{ scale: 0.75 }}>K</motion.span>
+              <motion.span whileHover={{ scale: 0.75 }}>A</motion.span>
+              <motion.span whileHover={{ scale: 0.75 }}>R</motion.span>
               <motion.span whileHover={{ scale: 0.75 }}>T</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>H</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>I</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>N</motion.span>
-              <motion.span whileHover={{ scale: 0.75 }}>G</motion.span>
+             
              </div>
 
   <motion.div className='search' onClick={()=>{setShowModal(true)}}  whileTap={{ scale: 0.75 }}>

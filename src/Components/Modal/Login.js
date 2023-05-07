@@ -60,6 +60,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
   const handleLogin = async (e) =>{
     e.preventDefault()
     await Log(dispatch,{username:UserLogin,password:passLogin})
+    
     setShowLogModal(false)
 
   }
