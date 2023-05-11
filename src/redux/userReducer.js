@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
+
 
 const userSlice = createSlice({
   name: "user",
@@ -13,11 +14,14 @@ const userSlice = createSlice({
       state.isFetching = true;
     },
     loginSuccess: (state, action) => {
+    
       state.isFetching = false;
       const {username,_id}=action.payload
       console.log(username)
       state.currentUser = username;
       state.id=_id;
+      
+     
     },
     loginFailure: (state) => {
       state.isFetching = false;

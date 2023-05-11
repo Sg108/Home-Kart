@@ -13,14 +13,19 @@ import {
     REGISTER,
 } from "redux-persist"
 import storage from "redux-persist/lib/storage"
-const persistConfig = {
-    key: "root",
+const persistConfig1 = {
+    key: "root1",
+    version: 1,
+    storage,
+}
+const persistConfig2 = {
+    key: "root2",
     version: 1,
     storage,
 }
 
-const persistedReducer1 = persistReducer(persistConfig, userReducer)
-const persistedReducer2 = persistReducer(persistConfig, cartReducer)
+const persistedReducer1 = persistReducer(persistConfig1, userReducer)
+const persistedReducer2 = persistReducer(persistConfig2, cartReducer)
 // export const store = configureStore({
 //   reducer: {
 //    user:userReducer

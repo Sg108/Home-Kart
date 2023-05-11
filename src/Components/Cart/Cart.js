@@ -227,6 +227,7 @@ const Cart = ({setNavcol,navcol}) => {
   const dispatch=useDispatch()
   const cart=useSelector((state)=>state.cart.products)
   const User = useSelector((state)=>state.user.curentUser)
+  const userid = useSelector((state)=>state.user.id)
   const total=useSelector((state)=>state.cart.total)
   function LoadRazorpay() {
     const script = document.createElement("script")
@@ -306,8 +307,24 @@ else{
   setNavcol(true)
 }
   },[Location])
-  function deleteFromCart(item,id){
+ async function  deleteFromCart(item,id) {
        dispatch(deleteProduct({...item,index:id}))
+       console.log(item)
+       await fetch(`http://localhost:3000/api/carts/${userid.toString()}/${item.itemId}`,{
+            method:"DELETE",
+            credentials: "include" ,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true,
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+               
+              
+               
+              },
+             
+             
+          }).then((x)=>{console.log(x)}).catch((err)=>{console.log(err)})
   }
   return (
     <>

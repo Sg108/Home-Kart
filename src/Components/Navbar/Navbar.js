@@ -12,8 +12,9 @@ import Login from '../Modal/Login'
 import {useSelector,useDispatch} from 'react-redux'
 import { Router,Link} from 'react-router-dom';
 import { loginFailure, loginStart, loginSuccess } from "../../redux/userReducer"
+import { logoutRefresh } from "../../redux/cartRedux"
 import { ShoppingBagOutlined } from '@mui/icons-material'
-
+import {addinitialProducts}from "../../redux/cartRedux"
 import {Badge} from '@material-ui/core'
 const Navbar = ({navcol}) => {
   const [showModal,setShowModal ]=useState(false)
@@ -23,12 +24,13 @@ const Navbar = ({navcol}) => {
   const [Others,setOthers]= useState(false)
   const [isOpen, toggleOpen] = useCycle(false, true);
   const userName=useSelector((state)=>state.user.currentUser)
+  const id=useSelector((state)=>state.user.id)
   const quantity=useSelector((state)=>state.cart.quantity)
   //const [user,setUser]=useState("")
   const logout = async () => {
-    //window.open("http://localhost:3002/api/users/auth/logout", "_self");
+  //   //window.open("http://localhost:3002/api/users/auth/logout", "_self");
     try{
-    const r = await fetch("https://ekartapi108.azurewebsites.net/api/users/auth/logout",{
+    const r = await fetch("http://localhost:3000/api/users/auth/logout",{
          method:"POST",
          credentials:"include",
          headers: {
@@ -47,12 +49,14 @@ const Navbar = ({navcol}) => {
        
     })
    
-    dispatch(loginSuccess({username:null}))
+    dispatch(loginSuccess({username:null,_id:null}))
+    dispatch(logoutRefresh())
   }
   catch(e){
     console.log(e)
   }
-  };
+  console.log(document.cookie)
+  }
   const sidebarVariants = {
       open: {
         clipPath:[`circle(0% at 50% 96%)`,`circle(0% at 50% 96%)`,`circle(200% at 50% 96%)`],

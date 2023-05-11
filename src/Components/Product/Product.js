@@ -53,7 +53,7 @@ const Amount = styled.span`
 export const Product = () => {
     let { id } = useParams()
     // id--
-
+    const userid=useSelector((state)=>state.user.id)
     const [data, setData] = useState(null)
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${id}`)
@@ -74,8 +74,27 @@ export const Product = () => {
         }
     }
 
-    function addToCartFunction() {
-        dispatch(addProduct({ ...data, quantity: quantity }))
+    const  addToCartFunction = async()=>{
+        const dateString = Date.now().toString(36);
+        const randomness = Math.random().toString(36).substr(2);
+        let uid= dateString + randomness;
+        
+        await fetch(`http://localhost:3000/api/carts/${userid.toString()}`,{
+            method:"POST",
+            credentials: "include" ,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true,
+                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+               
+              
+               
+              },
+               body:JSON.stringify({ products:{...data, quantity: quantity,itemId:uid }})
+             
+          }).then((x)=>{console.log(x)}).catch((err)=>{console.log(err)})
+        dispatch(addProduct({ ...data, quantity: quantity,itemId:uid }))
     }
    
     const handleClick = (state) => {

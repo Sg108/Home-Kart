@@ -2,8 +2,10 @@ import React,{useEffect, useState} from 'react'
 import {motion,AnimatePresence} from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch,faXmark } from '@fortawesome/free-solid-svg-icons'
+import {addinitialProducts}from "../../redux/cartRedux";
 import { useDispatch, useSelector } from "react-redux";
 import insta from '../../images/insta.png'
+
 import './Login.css'
 import {Log} from '../../redux/apiCalls'
 const Login = ({showLogModal,setShowLogModal}) => {
@@ -15,7 +17,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
   const [password,setPassword]=useState("")
   const [UserLogin,setUserLogin]=useState("")
   const [passLogin,setPassLogin]=useState("")
- 
+  const id=useSelector((state)=>state.user.id)
   const google = () => {
 
     window.open("http://localhost:5000/auth/google", "_self");
@@ -24,7 +26,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try{
-     const res= await fetch("https://ekartapi108.azurewebsites.net/api/users/auth/register",{
+     const res= await fetch("http://localhost:3000/api/users/auth/register",{
          method:"POST",
          headers: {
           Accept: "application/json",
@@ -41,11 +43,16 @@ const Login = ({showLogModal,setShowLogModal}) => {
        
     })
     if (res.status === 201) {
-      setName("");
+
+      setName(""); 
       setEmail("");
       setPassword("")
       setUsername("")
       setShowLogModal(false)
+      // await fetch(`https://localhost:3000/api/users/carts/${id.toString()}`,{
+      //   method:"GET",
+      //   credentials: "include" 
+      // }).then((x)=>{x.json()}).then((data)=>{dispatch(addinitialProducts({data}))}).catch((err)=>{console.log(err)})
     } else {
      console.log(res)
     }
@@ -59,9 +66,31 @@ const Login = ({showLogModal,setShowLogModal}) => {
   }
   const handleLogin = async (e) =>{
     e.preventDefault()
-    await Log(dispatch,{username:UserLogin,password:passLogin})
-    
+    const uid=await Log(dispatch,{username:UserLogin,password:passLogin})
     setShowLogModal(false)
+    try{
+   const data= await fetch(`http://localhost:3000/api/carts/${uid}`,{
+           method:"GET",
+           credentials:"include",
+           headers: {
+            
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+            
+          
+          },
+  
+  })
+  const cartdata = await data.json()
+  console.log(cartdata)
+  dispatch(addinitialProducts({products:cartdata.products}))
+}
+catch(err)
+{
+  console.log(err)
+}
+    
 
   }
   return (

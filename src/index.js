@@ -13,7 +13,7 @@ ReactDOM.render(
   
   
    <Provider store={store}>
-   <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
     <App />
     </PersistGate>
     </Provider>
