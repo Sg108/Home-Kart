@@ -310,7 +310,7 @@ else{
  async function  deleteFromCart(item,id) {
        dispatch(deleteProduct({...item,index:id}))
        console.log(item)
-       await fetch(`http://localhost:3000/api/carts/${userid.toString()}/${item.itemId}`,{
+       await fetch(`https://ekartapi108.azurewebsites.net/api/carts/${userid.toString()}/${item.itemId}`,{
             method:"DELETE",
             credentials: "include" ,
             headers: {

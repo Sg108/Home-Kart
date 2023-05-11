@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost:3000/api/";
+const BASE_URL = "https://ekartapi108.azurewebsites.net/api/";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";

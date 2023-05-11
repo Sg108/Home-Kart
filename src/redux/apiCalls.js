@@ -7,7 +7,7 @@ export  const Log = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     //const res = await publicRequest.post("users/auth/login", user);
-    const res= await fetch("http://localhost:3000/api/users/auth/login",{
+    const res= await fetch("https://ekartapi108.azurewebsites.net/api/users/auth/login",{
       method:"POST",
       credentials: "include" ,
       headers: {

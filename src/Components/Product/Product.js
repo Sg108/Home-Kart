@@ -79,7 +79,7 @@ export const Product = () => {
         const randomness = Math.random().toString(36).substr(2);
         let uid= dateString + randomness;
         
-        await fetch(`http://localhost:3000/api/carts/${userid.toString()}`,{
+        await fetch(`https://ekartapi108.azurewebsites.net/api/carts/${userid.toString()}`,{
             method:"POST",
             credentials: "include" ,
             headers: {

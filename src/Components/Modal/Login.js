@@ -26,7 +26,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try{
-     const res= await fetch("http://localhost:3000/api/users/auth/register",{
+     const res= await fetch("http://ekartapi108.azurewebsites.net/api/users/auth/register",{
          method:"POST",
          headers: {
           Accept: "application/json",
@@ -69,7 +69,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
     const uid=await Log(dispatch,{username:UserLogin,password:passLogin})
     setShowLogModal(false)
     try{
-   const data= await fetch(`http://localhost:3000/api/carts/${uid}`,{
+   const data= await fetch(`https://ekartapi108.azurewebsites.net/api/carts/${uid}`,{
            method:"GET",
            credentials:"include",
            headers: {
