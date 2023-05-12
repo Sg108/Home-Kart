@@ -26,7 +26,7 @@ const Login = ({showLogModal,setShowLogModal}) => {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try{
-     const res= await fetch("http://ekartapi108.azurewebsites.net/api/users/auth/register",{
+     const res= await fetch("https://ekartapi108.azurewebsites.net/api/users/auth/register",{
          method:"POST",
          headers: {
           Accept: "application/json",
