@@ -8,7 +8,6 @@ import {store,persistor} from "./redux/store"
 import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
 import '../node_modules/swiper/swiper-bundle.css';
-
 ReactDOM.render(
   
   

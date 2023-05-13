@@ -158,11 +158,7 @@ const Navbar = ({navcol}) => {
   }
    else if(window.location.href.split('/').slice(-1)[0]===''){
     console.log( document.querySelectorAll("[data-dropdown].active").length)
-    // lower.style.backgroundColor="transparent"
-   
-    // document.querySelectorAll(".button").forEach(x=>{
-    //   x.style.color="white"
-    //  })
+
    }
   }
   return (

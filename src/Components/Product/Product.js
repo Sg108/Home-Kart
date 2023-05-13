@@ -3,8 +3,9 @@ import "./Product.css"
 import styled from "styled-components"
 import { Add, Remove } from "@material-ui/icons"
 
-import axios from "axios"
-import { data } from "../../data"
+//import { Button, Popup } from "semantic-ui-react";
+import NotLogged from "../Modal/NotLogged"
+
 import { Swiper, SwiperSlide } from "swiper/react"
 import { motion, AnimatePresence } from "framer-motion"
 import "swiper/css"
@@ -14,6 +15,7 @@ import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper"
 import { addProduct } from "../../redux/cartRedux"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+
 SwiperCore.use([Autoplay, Pagination, Navigation])
 
 const proVariants = {
@@ -33,6 +35,13 @@ const proVariants = {
         // },
     },
 }
+
+// const styleLink = document.createElement("link");
+// styleLink.rel = "stylesheet";
+// styleLink.href =
+// "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+// document.head.appendChild(styleLink);
+
 const AmountContainer = styled.div`
     display: flex;
     align-items: center;
@@ -54,7 +63,10 @@ export const Product = () => {
     let { id } = useParams()
     // id--
     const userid=useSelector((state)=>state.user.id)
+    const currentUser=useSelector((state)=>state.user.currentUser)
     const [data, setData] = useState(null)
+    const [showModal,setShowModal ]=useState(false)
+  
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${id}`)
             .then((res) => res.json())
@@ -75,7 +87,7 @@ export const Product = () => {
     }
 
     const  addToCartFunction = async()=>{
-        const dateString = Date.now().toString(36);
+           const dateString = Date.now().toString(36);
         const randomness = Math.random().toString(36).substr(2);
         let uid= dateString + randomness;
         
@@ -95,6 +107,7 @@ export const Product = () => {
              
           }).then((x)=>{console.log(x)}).catch((err)=>{console.log(err)})
         dispatch(addProduct({ ...data, quantity: quantity,itemId:uid }))
+        
     }
    
     const handleClick = (state) => {
@@ -103,7 +116,10 @@ export const Product = () => {
 
     return (
         data ? 
+        <>
+        <NotLogged  showModal={showModal} setShowModal={setShowModal}/>
         <div className="product">
+        
             <div className="left">
                 {/* <div className="info-color"> */}
                 {/* <div className="color-head">Colors</div> */}
@@ -198,15 +214,21 @@ export const Product = () => {
                         <Amount>{quantity}</Amount>
                         <Add onClick={() => handleQuantity("inc")} />
                     </AmountContainer>
-                    <div
+                  
+                    
+                     <div
                         className="info-button"
-                        onClick={() => addToCartFunction()}
+                        onClick={currentUser?() => addToCartFunction():()=>setShowModal(true)}
                     >
                         <h3>Add To Cart</h3>
+     
                     </div>
+                        
+                   
                 </div>
             </div>
         </div>
+        </>
     :(
     <>
     </>)
