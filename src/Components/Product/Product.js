@@ -91,7 +91,7 @@ export const Product = () => {
         const randomness = Math.random().toString(36).substr(2);
         let uid= dateString + randomness;
         
-        await fetch(`https://ekartapi108.azurewebsites.net/api/carts/${userid.toString()}`,{
+        await fetch(`https://home-kart-api.vercel.app/api/carts/${userid.toString()}`,{
             method:"POST",
             credentials: "include" ,
             headers: {

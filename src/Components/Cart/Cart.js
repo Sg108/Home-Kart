@@ -239,7 +239,7 @@ const Cart = ({setNavcol,navcol}) => {
         try {
             // setLoading(true)
             const result = await axios.post(
-                "https://ekartapi108.azurewebsites.net/api/payments/create-order",
+                "https://home-kart-api.vercel.app/api/payments/create-order",
                 {
                     amount: total.toString()+"00",
                 }
@@ -249,7 +249,7 @@ const Cart = ({setNavcol,navcol}) => {
             const {
                 data: { key: razorpayKey },
             } = await axios.get(
-                "https://ekartapi108.azurewebsites.net/api/payments/get-razorpay-key"
+                "https://home-kart-api.vercel.app/api/payments/get-razorpay-key"
             )
 
             const options = {
@@ -261,7 +261,7 @@ const Cart = ({setNavcol,navcol}) => {
                 order_id: order_id,
                 handler: async function (response) {
                     const result = await axios.post(
-                        "https://ekartapi108.azurewebsites.net/api/payments/pay-order",
+                        "https://home-kart-api.vercel.app/api/payments/pay-order",
                         {
                             amount: amount,
                             razorpayPaymentId: response.razorpay_payment_id,
@@ -310,7 +310,7 @@ else{
  async function  deleteFromCart(item,id) {
        dispatch(deleteProduct({...item,index:id}))
        console.log(item)
-       await fetch(`https://ekartapi108.azurewebsites.net/api/carts/${userid.toString()}/${item.itemId}`,{
+       await fetch(`https://home-kart-api.vercel.app/api/carts/${userid.toString()}/${item.itemId}`,{
             method:"DELETE",
             credentials: "include" ,
             headers: {

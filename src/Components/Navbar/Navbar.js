@@ -30,7 +30,7 @@ const Navbar = ({navcol}) => {
   const logout = async () => {
   //   //window.open("http://localhost:3002/api/users/auth/logout", "_self");
     try{
-    const r = await fetch("https://ekartapi108.azurewebsites.net/api/users/auth/logout",{
+    const r = await fetch("https://home-kart-api.vercel.app/api/users/auth/logout",{
          method:"POST",
          credentials:"include",
          headers: {
